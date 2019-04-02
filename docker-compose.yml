@@ -1,4 +1,4 @@
-version: "3"
+version: "3.2"
 
 services:
   webserver:
@@ -41,10 +41,13 @@ services:
     links:
       - mysql
     networks:
-      - frontend
+      - backend
     environment:
       PMA_HOST: mysql
-      PMA_PORT: 33060
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: my_secret_passwd
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
     ports:
       - '8080:80'
     volumes: 
@@ -58,4 +61,5 @@ services:
       - "6379:6379"
 networks:
   frontend:
+    driver: bridge
   backend:
