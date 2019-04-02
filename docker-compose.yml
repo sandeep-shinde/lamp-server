@@ -26,7 +26,7 @@ services:
     networks:
       - backend
     ports:
-      - "33006:3306"
+      - "3306:3306"
     volumes: 
       - ${MYSQL_DATA_DIR-./data/mysql}:/var/lib/mysql
       - ${MYSQL_LOG_DIR-./logs/mysql}:/var/log/mysql
@@ -44,7 +44,7 @@ services:
       - frontend
     environment:
       PMA_HOST: mysql
-      PMA_PORT: 3306
+      PMA_PORT: 33060
     ports:
       - '8080:80'
     volumes: 
