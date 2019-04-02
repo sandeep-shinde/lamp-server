@@ -1,0 +1,5 @@
+localhost:80 172.20.0.1 - - [02/Apr/2019:03:27:13 +0000] "GET / HTTP/1.1" 403 501 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36"
+localhost:80 172.20.0.1 - - [02/Apr/2019:03:27:14 +0000] "GET /favicon.ico HTTP/1.1" 404 500 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36"
+localhost:80 172.20.0.1 - - [02/Apr/2019:03:27:36 +0000] "GET /phpmyadmin/ HTTP/1.1" 404 501 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36"
+localhost:80 172.20.0.1 - - [02/Apr/2019:03:28:50 +0000] "GET / HTTP/1.1" 403 501 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36"
+localhost:80 172.20.0.1 - - [02/Apr/2019:03:29:42 +0000] "-" 408 0 "-" "-"

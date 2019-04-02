@@ -1,0 +1,61 @@
+version: "3"
+
+services:
+  webserver:
+    build: 
+      context: ./bin/webserver
+    container_name: 'd-webserver'
+    restart: 'always'
+    ports:
+      - "80:80"
+      - "443:443"
+    links: 
+      - mysql
+    networks:
+      - frontend
+      - backend
+    volumes: 
+      - ${DOCUMENT_ROOT-./www}:/var/www/html
+      - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/php.ini
+      - ${VHOSTS_DIR-./config/vhosts}:/etc/apache2/sites-enabled
+      - ${LOG_DIR-./logs/apache2}:/var/log/apache2
+  mysql:
+    build: ./bin/dbserver
+    container_name: 'd-dbserver'
+    restart: 'always'
+    networks:
+      - backend
+    ports:
+      - "33006:3306"
+    volumes: 
+      - ${MYSQL_DATA_DIR-./data/mysql}:/var/lib/mysql
+      - ${MYSQL_LOG_DIR-./logs/mysql}:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: my_secret_passwd
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: 'd-phpmyadmin'
+    links:
+      - mysql
+    networks:
+      - frontend
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - '8080:80'
+    volumes: 
+      - /sessions
+  redis:
+    container_name: 'd-redis'
+    image: redis:latest
+    networks:
+      - frontend
+    ports:
+      - "6379:6379"
+networks:
+  frontend:
+  backend:

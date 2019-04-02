@@ -1,0 +1,12 @@
+services:
+  linux:
+    hostname: webserver
+    build: ./webserver/
+    networks:
+      - frontend
+      - backend
+    volumes:
+      - ./:/var/www/html
+networks:
+  frontend:
+  backend:
